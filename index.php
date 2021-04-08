@@ -1,79 +1,24 @@
 <?php
-  if (!empty($_GET['q'])) {
-    switch ($_GET['q']) {
-      case 'info':
-        phpinfo(); 
-        exit;
-      break;
+require_once("Config/Config.php");
+require_once("Helpers/Helpers.php");
+$url = isset($_GET['url']) ? $_GET['url'] : "Home/home";
+$arrUrl = explode("/", $url);
+$controller = $arrUrl[0];
+$methop = $arrUrl[0];
+$params = "";
+if (isset($arrUrl[1])) {
+    if ($arrUrl[1] != "") {
+        $methop = $arrUrl[1];
     }
-  }
+}
+if (isset($arrUrl[2])) {
+    if ($arrUrl[2] != "") {
+        for ($i=2; $i < count($arrUrl); $i++) { 
+            $params .= $arrUrl[$i]. ',';
+        }
+        $params = trim($params, ',');
+    }
+}
+require_once("Libraries/Core/Autoload.php");
+require_once("Libraries/Core/Load.php");
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laragon</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Karla:400" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Karla';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-
-            .opt {
-                margin-top: 30px;
-            }
-
-            .opt a {
-              text-decoration: none;
-              font-size: 150%;
-            }
-            
-            a:hover {
-              color: red;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title" title="Laragon">Laragon</div>
-     
-                <div class="info"><br />
-                      <?php print($_SERVER['SERVER_SOFTWARE']); ?><br />
-                      PHP version: <?php print phpversion(); ?>   <span><a title="phpinfo()" href="/?q=info">info</a></span><br />
-                      Document Root: <?php print ($_SERVER['DOCUMENT_ROOT']); ?><br />
-
-                </div>
-                <div class="opt">
-                  <div><a title="Getting Started" href="https://laragon.org/docs">Getting Started</a></div>
-                </div>
-            </div>
-
-        </div>
-    </body>
-</html>
