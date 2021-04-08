@@ -79,11 +79,11 @@ switch ($_GET["op"]) {
 		$data=Array();
 
 		while ($reg=$rspta->fetch_object()) {
-                 if ($reg->tipo_comprobante=='Ticket') {
-                 	$url='../reportes/exTicket.php?id=';
-                 }else{
-                    $url='../reportes/exFactura.php?id=';
-                 }
+			if ($reg->tipo_comprobante=='Ticket') {
+			$url='../reportes/exTicket.php?id=';
+			}else{
+			$url='../reportes/exFactura.php?id=';
+			}
 
 			$data[]=array(
             "0"=>(($reg->estado=='Aceptado')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idventa.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idventa.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idventa.')"><i class="fa fa-eye"></i></button>').
