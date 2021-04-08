@@ -15,7 +15,6 @@ $fecha_hora=isset($_POST["fecha_hora"])? limpiarCadena($_POST["fecha_hora"]):"";
 $impuesto=isset($_POST["impuesto"])? limpiarCadena($_POST["impuesto"]):"";
 $total_compra=isset($_POST["total_compra"])? limpiarCadena($_POST["total_compra"]):"";
 
-
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 	if (empty($idingreso)) {
@@ -26,7 +25,6 @@ switch ($_GET["op"]) {
 	}
 		break;
 	
-
 	case 'anular':
 		$rspta=$ingreso->anular($idingreso);
 		echo $rspta ? "Ingreso anulado correctamente" : "No se pudo anular el ingreso";
@@ -59,8 +57,7 @@ switch ($_GET["op"]) {
 			<td>'.$reg->precio_compra.'</td>
 			<td>'.$reg->precio_venta.'</td>
 			<td>'.$reg->precio_compra*$reg->cantidad.'</td>
-			<td></td>
-			</tr>';
+			<td></td></tr>';
 			$total=$total+($reg->precio_compra*$reg->cantidad);
 		}
 		echo '<tfoot>
@@ -83,7 +80,7 @@ switch ($_GET["op"]) {
 			}else{
 			   $url='../reportes/exFactura.php?id=';
 			}
-			
+
 			$data[]=array(
             "0"=>(($reg->estado=='Aceptado')?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="anular('.$reg->idingreso.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idingreso.')"><i class="fa fa-eye"></i></button>').
             '<a target="_blank" href="'.$url.$reg->idingreso.'"> <button class="btn btn-info btn-xs"><i class="fa fa-file"></i></button></a>',

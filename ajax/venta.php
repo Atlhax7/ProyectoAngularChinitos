@@ -15,10 +15,6 @@ $fecha_hora=isset($_POST["fecha_hora"])? limpiarCadena($_POST["fecha_hora"]):"";
 $impuesto=isset($_POST["impuesto"])? limpiarCadena($_POST["impuesto"]):"";
 $total_venta=isset($_POST["total_venta"])? limpiarCadena($_POST["total_venta"]):"";
 
-
-
-
-
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 	if (empty($idventa)) {
