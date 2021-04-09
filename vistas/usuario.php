@@ -1,5 +1,4 @@
 <?php 
-//activamos almacenamiento en el buffer
 ob_start();
 session_start();
 if (!isset($_SESSION['nombre'])) {
@@ -10,10 +9,9 @@ require 'header.php';
 if ($_SESSION['acceso']==1) {
  ?>
     <div class="content-wrapper">
-    <!-- Main content -->
     <section class="content">
 
-      <!-- Default box -->
+      <!-- Pagina default -->
       <div class="row">
         <div class="col-md-12">
       <div class="box">
@@ -58,7 +56,7 @@ if ($_SESSION['acceso']==1) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Gestion de usuarios</h4>
       </div>
       <div class="modal-body">
         <form action="" name="formulario" id="formulario" method="POST">

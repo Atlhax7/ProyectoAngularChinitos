@@ -16,7 +16,7 @@ function init(){
 	});
 
 	//cargamos los roles
-	$.post("../ajax/venta.php?op=selectRol", function(r){
+	$.post("../ajax/usuario.php?op=selectRol", function(r){
 		$("#idrol").html(r);
 		$('#idrol').selectpicker('refresh');
 	});
