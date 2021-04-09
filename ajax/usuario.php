@@ -18,6 +18,7 @@ $clave=isset($_POST["clave"])? limpiarCadena($_POST["clave"]):"";
 $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
 $apellido=isset($_POST["apellido"])? limpiarCadena($_POST["apellido"]):"";
 
+
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
 
@@ -174,11 +175,9 @@ switch ($_GET["op"]) {
 	case 'selectRol':
 		require_once "../modelos/Rol.php";
 		$rol = new Rol();
-
-		$rspta = $rol -> listarc();
-		
+		$rspta = $rol -> select();
 		while($reg=$rspta->fetch_object()){
-			echo '<option value='.$reg->idrol.'>'.$reg->nombre.'</option>';
+			echo '<option value=' .$reg->Codigo_perfil.'>'.$reg->Descripcion_perfil.'</option>';
 		}
 	break;
 }

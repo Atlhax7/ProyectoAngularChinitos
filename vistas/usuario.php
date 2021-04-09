@@ -112,7 +112,7 @@ if ($_SESSION['acceso']==1) {
               <h3>Seguridad</h3>
               <div class="form-group col-lg-6 col-md-6 col-xs-12">
                 <label for="">Rol</label>
-                <select name="idrol" id="idrol" class="form-control selectpicker" data-live-search="true" required>
+                <select name="cargo" id="cargo" class="form-control selectpicker" data-live-search="true" required>
 
                 </select>
               </div>
