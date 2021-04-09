@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require_once "../modelos/Usuario.php";
-require "../modelos/phpmailer.php";
+require "./phpmailer/PHPMailerAutoload.php";
 
 $usuario=new Usuario();
 
@@ -24,16 +24,6 @@ switch ($_GET["op"]) {
 
 	if (!file_exists($_FILES['imagen']['tmp_name'])|| !is_uploaded_file($_FILES['imagen']['tmp_name'])) {
 		$imagen=$_POST["imagenactual"];
-		$mail=new phpmailer();
-		$body=file_get_contents('contenido.html');
-		$mail>SetFrom('banquitomonster@gmail.com','Chinitos Market');
-		$mail>AddAddress($email,$nombre + " " + $apellido);
-		$mail>Subject("Envío de contraseña chinitos marcket"); 
-		if(!$mail>Send()){
-			echo "Error al enviar el mensaje: ".$mail>ErrorInfo;
-		}else{
-			echo "Mensaje enviado!!";
-		}
 	}else{
 		$ext=explode(".", $_FILES["imagen"]["name"]);
 		if ($_FILES['imagen']['type']=="image/jpg" || $_FILES['imagen']['type']=="image/jpeg" || $_FILES['imagen']['type']=="image/png") {
@@ -49,6 +39,25 @@ switch ($_GET["op"]) {
 	if (empty($idusuario)) {
 		$rspta=$usuario->insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso'],$apellido);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar todos los datos del usuario";
+		$mail=new PHPMailer;
+		$mail->isSMTP();
+		$mail->Host='smtp.gmail.com';
+		$mail->Port=587;
+		$mail->SMTPAuth=true;
+		$mail->SMTPSecure='tls';
+		$mail->Username="banquitomonster@gmail.com";
+		$mail->Password="Monster1234/";
+		$mail->setFrom($email,$nombre);
+		$mail->addAddress('banquitomonster@gmail.com');
+		$mail->addReplyTo($email,$nombre);
+		$mail->isHTML(true);
+		$mail->Subject='Enviador por '.$nombre;
+		$mail->Body='<h1>Contraseña</h1><br/>'.$clave;
+		if(!$mail->send()){
+			$result="Algo esta mal, vuelva a intentar";
+		}else{
+			$result="Se envio contraseña por  correo";
+		}
 	}else{
 		$rspta=$usuario->editar($idusuario,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso'],$apellido);
 		echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos";
