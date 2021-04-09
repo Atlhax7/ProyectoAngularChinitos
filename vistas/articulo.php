@@ -66,23 +66,34 @@ if ($_SESSION['almacen']==1) {
       <label for="">Stock</label>
       <input class="form-control" type="number" name="stock" id="stock"  required>
     </div>
-       <div class="form-group col-lg-6 col-md-6 col-xs-12">
-      <label for="">Descripcion</label>
-      <input class="form-control" type="text" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripcion">
-    </div>
+    <ul class="nav nav-pills">
+      <li class="active"><a data-toggle="pill" href="#home">Descripcion</a></li>
+      <li><a data-toggle="pill" href="#menu1">Codigo</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <h3>Descripcion</h3>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-      <label for="">Imagen:</label>
-      <input class="form-control" type="file" name="imagen" id="imagen">
-      <input type="hidden" name="imagenactual" id="imagenactual">
-      <img src="" alt="" width="150px" height="120" id="imagenmuestra">
-    </div>
-    <div class="form-group col-lg-6 col-md-6 col-xs-12">
-      <label for="">Codigo:</label>
-      <input class="form-control" type="text" name="codigo" id="codigo" placeholder="codigo del prodcuto" required>
-      <button class="btn btn-success" type="button" onclick="generarbarcode()">Generar</button>
-      <button class="btn btn-info" type="button" onclick="imprimir()">Imprimir</button>
-      <div id="print">
-        <svg id="barcode"></svg>
+          <label for="">Descripcion</label>
+          <input class="form-control" type="text" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripcion">
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-xs-12">
+          <label for="">Imagen:</label>
+          <input class="form-control" type="file" name="imagen" id="imagen">
+          <input type="hidden" name="imagenactual" id="imagenactual">
+          <img src="" alt="" width="150px" height="120" id="imagenmuestra">
+        </div>
+      <div id="menu1" class="tab-pane fade">
+        <h3>Codigo</h3>
+        <div class="form-group col-lg-6 col-md-6 col-xs-12">
+          <label for="">Codigo:</label>
+          <input class="form-control" type="text" name="codigo" id="codigo" placeholder="codigo del prodcuto" required>
+          <button class="btn btn-success" type="button" onclick="generarbarcode()">Generar</button>
+          <button class="btn btn-info" type="button" onclick="imprimir()">Imprimir</button>
+          <div id="print">
+            <svg id="barcode"></svg>
+          </div>
+        </div>
       </div>
     </div>
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

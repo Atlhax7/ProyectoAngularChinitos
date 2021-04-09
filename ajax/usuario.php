@@ -1,7 +1,7 @@
 <?php 
 session_start();
 require_once "../modelos/Usuario.php";
-require "./phpmailer/PHPMailerAutoload.php";
+// require "./phpmailer/PHPMailerAutoload.php";
 
 $usuario=new Usuario();
 

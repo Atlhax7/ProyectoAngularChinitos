@@ -124,9 +124,16 @@ if ($_SESSION['acceso']==1) {
                 <label for="">Clave(*):</label>
                 <input class="form-control" type="password" name="clave" id="clave" maxlength="64" placeholder="Clave">
               </div>
+              <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label>Permisos</label>
+                <ul id="permisos" style="list-style: none;">
+                  
+                </ul>
+              </div>
             </div>
+            
           </div>
-
+          
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
             <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>

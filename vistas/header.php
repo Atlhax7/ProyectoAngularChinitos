@@ -156,6 +156,8 @@ if ($_SESSION['acceso']==1) {
           <ul class="treeview-menu">
             <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
             <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
+            <li><a href="rol.php"><i class="fa fa-circle-o"></i> Roles</a></li>
+            <li><a href="permisoU.php"><i class="fa fa-circle-o"></i> Permisos por usuario</a></li>
           </ul>
         </li>';
 }
