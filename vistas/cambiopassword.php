@@ -9,25 +9,9 @@ if (!isset($_SESSION['nombre'])) {
  
 require 'header.php';
 
-if ($_SESSION['cambio contraseña']==1) {
+if ($_SESSION['escritorio']==1) {
     require_once "../modelos/Consultas.php";
   $consulta = new Consultas();
-  $rsptac = $consulta->totalcomprahoy();
-  $regc=$rsptac->fetch_object();
-  $totalc=$regc->total_compra;
-
-  $rsptav = $consulta->totalventahoy();
-  $regv=$rsptav->fetch_object();
-  $totalv=$regv->total_venta;
-
-  //obtener valores para cargar al grafico de barras
-  $compras10 = $consulta->comprasultimos_10dias();
-  $fechasc='';
-  $totalesc='';
-  while ($regfechac=$compras10->fetch_object()) {
-    $fechasc=$fechasc.'"'.$regfechac->fecha.'",';
-    $totalesc=$totalesc.$regfechac->total.',';
-  }
  ?>
 
 <div class="content-wrapper">
@@ -40,10 +24,34 @@ if ($_SESSION['cambio contraseña']==1) {
           <div class="box">
           <div class="box-header with-border">
             <div>
-              <h1>Bienvenido a Chinitos Market 2020-2021</h1><br/>
-              <h3 class="text-center">GR14_COMERCIALIZADORA</h3>
+            <h3 class="text-center">GR14_COMERCIALIZADORA</h3>
               <div class="text-center">
                 <img src="../public/images/logo.png">
+              </div>
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <form  method="post" id="frmPass">
+                  <div class="form-group has-feedback">
+                    <input type="text" id="logina" name="logina" class="form-control" placeholder="Usuario">
+                    <span class="fa fa-user form-control-feedback"></span>
+                  </div>
+                  <div class="form-group has-feedback">
+                    <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Contraseña Actual">
+                    <span class="fa fa-key form-control-feedback"></span>
+                  </div>
+                  <div class="form-group has-feedback">
+                    <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Nueva Contraseña">
+                    <span class="fa fa-key form-control-feedback"></span>
+                  </div>
+                  <div class="form-group has-feedback">
+                    <input type="password" id="clavea" name="clavea" class="form-control" placeholder="Confirmar Contraseña">
+                    <span class="fa fa-key form-control-feedback"></span>
+                  </div>
+                  <div class="col-xs-4"></div>
+                  <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Cambiar contraseña</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
