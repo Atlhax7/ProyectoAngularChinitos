@@ -72,8 +72,8 @@ if ($_SESSION['acceso']==1) {
             <input class="form-control" type="text" name="apellido" id="apellido" maxlength="100" placeholder="Apellido" required>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Email: </label>
-            <input class="form-control" type="email" name="email" id="email" maxlength="70" placeholder="email">
+            <label for="">Email(*): </label>
+            <input class="form-control" type="email" name="email" id="email" maxlength="70" placeholder="email" require>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
             <label for="">Imagen:</label>

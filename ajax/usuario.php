@@ -23,6 +23,16 @@ switch ($_GET["op"]) {
 
 	if (!file_exists($_FILES['imagen']['tmp_name'])|| !is_uploaded_file($_FILES['imagen']['tmp_name'])) {
 		$imagen=$_POST["imagenactual"];
+		$mail=new phpmailer();
+		$body=file_get_contents('contenido.html');
+		$mail>SetFrom('banquitomonster@gmail.com','Chinitos Market');
+		$mail>AddAddress($email,$nombre + " " + $apellido);
+		$mail>Subject("Envío de contraseña chinitos marcket"); 
+		if(!$mail>Send()){
+			echo "Error al enviar el mensaje: ".$mail>ErrorInfo;
+		}else{
+			echo "Mensaje enviado!!";
+		}
 	}else{
 		$ext=explode(".", $_FILES["imagen"]["name"]);
 		if ($_FILES['imagen']['type']=="image/jpg" || $_FILES['imagen']['type']=="image/jpeg" || $_FILES['imagen']['type']=="image/png") {
@@ -30,6 +40,8 @@ switch ($_GET["op"]) {
 			move_uploaded_file($_FILES["imagen"]["tmp_name"], "../files/usuarios/".$imagen);
 		}
 	}
+
+	
 
 	//Hash SHA256 para la contraseña
 	$clavehash=hash("SHA256", $clave);
