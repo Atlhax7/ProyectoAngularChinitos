@@ -8,7 +8,7 @@ if (strlen(session_id())<1)
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>SISVentas | Escritorio</title>
+  <title>GR14_COMERCIALIZADORA | Escritorio</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -36,9 +36,9 @@ if (strlen(session_id())<1)
     <!-- Logo -->
     <a href="escritorio.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>SIS</b> V</span>
+      <span class="logo-mini"><b>GR</b>14</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>SIS</b> VENTAS</span>
+      <span class="logo-lg"><b>GR14</b>_COMERCIALIZADORA</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -59,11 +59,6 @@ if (strlen(session_id())<1)
               <!-- User image -->
               <li class="user-header">
                 <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
-
-                <p>
-                  angel totocayo cayllahua-Desarrollo de software
-                  <small>Agosto 2018</small>
-                </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">

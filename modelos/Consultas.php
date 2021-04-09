@@ -41,6 +41,9 @@ public function ventasultimos_12meses(){
 	return ejecutarConsulta($sql);
 }
 
+public function cambiopass($nombre){
+	$sql="SELECT idusuario FROM usuario WHERE nombre=$nombre"
+}
 
 }
 

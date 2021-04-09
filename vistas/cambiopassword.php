@@ -9,9 +9,8 @@ if (!isset($_SESSION['nombre'])) {
  
 require 'header.php';
 
-if ($_SESSION['escritorio']==1) {
-
-  require_once "../modelos/Consultas.php";
+if ($_SESSION['cambio contraseña']==1) {
+    require_once "../modelos/Consultas.php";
   $consulta = new Consultas();
   $rsptac = $consulta->totalcomprahoy();
   $regc=$rsptac->fetch_object();
@@ -29,11 +28,9 @@ if ($_SESSION['escritorio']==1) {
     $fechasc=$fechasc.'"'.$regfechac->fecha.'",';
     $totalesc=$totalesc.$regfechac->total.',';
   }
-
-
-
  ?>
-  <div class="content-wrapper">
+
+<div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
 
@@ -56,7 +53,7 @@ if ($_SESSION['escritorio']==1) {
     </selection>
   </div>
 
-<?php 
+  <?php 
 }else{
  require 'noacceso.php'; 
 }
