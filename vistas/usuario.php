@@ -75,54 +75,58 @@ if ($_SESSION['acceso']==1) {
             <label for="">Email: </label>
             <input class="form-control" type="email" name="email" id="email" maxlength="70" placeholder="email">
           </div>
-          
           <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Tipo Documento(*):</label>
-          <select name="tipo_documento" id="tipo_documento" class="form-control select-picker" required>
-            <option value="NINGUNO">NINGUNO</option>
-            <option value="RUC">RUC</option>
-            <option value="CEDULA">CEDULA</option>
-          </select>
-          </div>
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Numero de Documento:</label>
-            <input type="text" class="form-control" name="num_documento" id="num_documento" placeholder="Documento" maxlength="20">
-          </div>
-            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Direccion</label>
-            <input class="form-control" type="text" name="direccion" id="direccion"  maxlength="70">
-          </div>
-            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Telefono</label>
-            <input class="form-control" type="text" name="telefono" id="telefono" maxlength="20" placeholder="Número de telefono">
-          </div>
-          
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Rol</label>
-            <select name="idrol" id="idrol" class="form-control selectpicker" data-live-search="true" required>
-
-            </select>
-          </div>
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Login(*):</label>
-            <input class="form-control" type="text" name="login" id="login" maxlength="20" placeholder="nombre de usuario" required>
-          </div>
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Clave(*):</label>
-            <input class="form-control" type="password" name="clave" id="clave" maxlength="64" placeholder="Clave">
-          </div>
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label>Permisos</label>
-            <ul id="permisos" style="list-style: none;">
-              
-            </ul>
-          </div>
-              <div class="form-group col-lg-6 col-md-6 col-xs-12">
             <label for="">Imagen:</label>
             <input class="form-control" type="file" name="imagen" id="imagen">
             <input type="hidden" name="imagenactual" id="imagenactual">
             <img src="" alt="" width="150px" height="120" id="imagenmuestra">
           </div>
+          <div class="tab-content">
+            <div id="tab1" class="tab-pane fade in active">
+              <h3>Datos personales</h3>
+              <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="">Tipo Documento(*):</label>
+              <select name="tipo_documento" id="tipo_documento" class="form-control select-picker" required>
+                <option value="NINGUNO">NINGUNO</option>
+                <option value="RUC">RUC</option>
+                <option value="CEDULA">CEDULA</option>
+              </select>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="">Numero de Documento:</label>
+                <input type="text" class="form-control" name="num_documento" id="num_documento" placeholder="Documento" maxlength="20">
+              </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="">Direccion</label>
+                <input class="form-control" type="text" name="direccion" id="direccion"  maxlength="70">
+              </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="">Telefono</label>
+                <input class="form-control" type="text" name="telefono" id="telefono" maxlength="20" placeholder="Número de telefono">
+              </div>
+            </div>
+          
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+              <label for="">Rol</label>
+              <select name="idrol" id="idrol" class="form-control selectpicker" data-live-search="true" required>
+
+              </select>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+              <label for="">Login(*):</label>
+              <input class="form-control" type="text" name="login" id="login" maxlength="20" placeholder="nombre de usuario" required>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+              <label for="">Clave(*):</label>
+              <input class="form-control" type="password" name="clave" id="clave" maxlength="64" placeholder="Clave">
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-xs-12">
+              <label>Permisos</label>
+              <ul id="permisos" style="list-style: none;">
+                
+              </ul>
+            </div>
+          
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
             <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
