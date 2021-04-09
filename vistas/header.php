@@ -98,7 +98,7 @@ if ($_SESSION['escritorio']==1) {
 if ($_SESSION['almacen']==1) {
   echo ' <li class="treeview">
           <a href="#">
-            <i class="fa fa-laptop"></i> <span>Almacen</span>
+            <i class="fa fa-laptop"></i> <span>Comercializadora</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -148,7 +148,7 @@ if ($_SESSION['ventas']==1) {
 if ($_SESSION['acceso']==1) {
   echo '  <li class="treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span>Acceso</span>
+            <i class="fa fa-folder"></i> <span>Seguridad</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>

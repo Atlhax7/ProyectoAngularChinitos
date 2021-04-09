@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once "../modelos/Usuario.php";
+require "../modelos/phpmailer.php";
 
 $usuario=new Usuario();
 
@@ -15,6 +16,7 @@ $cargo=isset($_POST["cargo"])? limpiarCadena($_POST["cargo"]):"";
 $login=isset($_POST["login"])? limpiarCadena($_POST["login"]):"";
 $clave=isset($_POST["clave"])? limpiarCadena($_POST["clave"]):"";
 $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
+$apellido=isset($_POST["apellido"])? limpiarCadena($_POST["apellido"]):"";
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
@@ -32,10 +34,10 @@ switch ($_GET["op"]) {
 	//Hash SHA256 para la contraseña
 	$clavehash=hash("SHA256", $clave);
 	if (empty($idusuario)) {
-		$rspta=$usuario->insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso']);
+		$rspta=$usuario->insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso'],$apellido);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar todos los datos del usuario";
 	}else{
-		$rspta=$usuario->editar($idusuario,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso']);
+		$rspta=$usuario->editar($idusuario,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso'],$apellido);
 		echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos";
 	}
 	break;
@@ -62,7 +64,7 @@ switch ($_GET["op"]) {
 
 	while ($reg=$rspta->fetch_object()) {
 		$data[]=array(
-			"0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
+			"0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
 			"1"=>$reg->nombre,
 			"2"=>$reg->tipo_documento,
 			"3"=>$reg->num_documento,
@@ -70,7 +72,8 @@ switch ($_GET["op"]) {
 			"5"=>$reg->email,
 			"6"=>$reg->login,
 			"7"=>"<img src='../files/usuarios/".$reg->imagen."' height='50px' width='50px'>",
-			"8"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>'
+			"8"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':'<span class="label bg-red">Desactivado</span>',
+			"9"=>$reg->apellido
 		);
 	}
 
@@ -156,10 +159,16 @@ switch ($_GET["op"]) {
 	header("Location: ../index.php");
 	break;
 
-	
+	case 'selectRol':
+		require_once "../modelos/Rol.php";
+		$rol = new Rol();
 
-
-	
+		$rspta = $rol -> listarc();
+		
+		while($reg=$rspta->fetch_object()){
+			echo '<option value='.$reg->idrol.'>'.$reg->nombre.'</option>';
+		}
+	break;
 }
 ?>
 

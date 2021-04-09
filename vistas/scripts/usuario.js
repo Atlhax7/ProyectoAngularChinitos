@@ -10,10 +10,16 @@ function init(){
    })
 
    $("#imagenmuestra").hide();
-//mostramos los permisos
-$.post("../ajax/usuario.php?op=permisos&id=", function(r){
-	$("#permisos").html(r);
-});
+	//mostramos los permisos
+	$.post("../ajax/usuario.php?op=permisos&id=", function(r){
+		$("#permisos").html(r);
+	});
+
+	//cargamos los roles
+	$.post("../ajax/venta.php?op=selectRol", function(r){
+		$("#idrol").html(r);
+		$('#idrol').selectpicker('refresh');
+	});
 }
 
 //funcion limpiar
@@ -29,6 +35,7 @@ function limpiar(){
 	$("#imagenmuestra").attr("src","");
 	$("#imagenactual").val("");
 	$("#idusuario").val("");
+	$("#apellido").val("");
 }
 
 //funcion mostrar formulario
@@ -122,7 +129,7 @@ function mostrar(idusuario){
             $("#imagenmuestra").attr("src","../files/usuarios/"+data.imagen);
             $("#imagenactual").val(data.imagen);
             $("#idusuario").val(data.idusuario);
-
+			$("#apellido").val(data.apellido);
 
 		});
 	$.post("../ajax/usuario.php?op=permisos&id="+idusuario, function(r){

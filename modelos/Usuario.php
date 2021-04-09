@@ -10,8 +10,8 @@ public function __construct(){
 }
 
 //metodo insertar regiustro
-public function insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos){
-	$sql="INSERT INTO usuario (nombre,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion) VALUES ('$nombre','$tipo_documento','$num_documento','$direccion','$telefono','$email','$cargo','$login','$clave','$imagen','1')";
+public function insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos,$apellido){
+	$sql="INSERT INTO usuario (nombre,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion,apellido) VALUES ('$nombre','$tipo_documento','$num_documento','$direccion','$telefono','$email','$cargo','$login','$clave','$imagen','1','$apellido')";
 	//return ejecutarConsulta($sql);
 	 $idusuarionew=ejecutarConsulta_retornarID($sql);
 	 $num_elementos=0;
@@ -27,8 +27,8 @@ public function insertar($nombre,$tipo_documento,$num_documento,$direccion,$tele
 	 return $sw;
 }
 
-public function editar($idusuario,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos){
-	$sql="UPDATE usuario SET nombre='$nombre',tipo_documento='$tipo_documento',num_documento='$num_documento',direccion='$direccion',telefono='$telefono',email='$email',cargo='$cargo',login='$login',clave='$clave',imagen='$imagen' 
+public function editar($idusuario,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos,$apellido){
+	$sql="UPDATE usuario SET nombre='$nombre',tipo_documento='$tipo_documento',num_documento='$num_documento',direccion='$direccion',telefono='$telefono',email='$email',cargo='$cargo',login='$login',clave='$clave',imagen='$imagen',apellido='$apellido' 
 	WHERE idusuario='$idusuario'";
 	 ejecutarConsulta($sql);
 
@@ -79,7 +79,7 @@ public function listarmarcados($idusuario){
 
 public function verificar($login,$clave){
 
-	$sql="SELECT idusuario,nombre,tipo_documento,num_documento,telefono,email,cargo,imagen,login FROM usuario WHERE login='$login' AND clave='$clave' AND condicion='1'";
+	$sql="SELECT idusuario,nombre,tipo_documento,num_documento,telefono,email,cargo,imagen,login,apellido FROM usuario WHERE login='$login' AND clave='$clave' AND condicion='1'";
 	 return ejecutarConsulta($sql);
 
 }
