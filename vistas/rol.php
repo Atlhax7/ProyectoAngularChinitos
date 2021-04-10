@@ -52,15 +52,15 @@ if ($_SESSION['acceso']==1) {
         <form action="" name="FormularioRol" id="FormularioRol" method="POST">
           <div class="form-group col-lg-6 col-md-6 col-xs-6">
             <label for="">Codigo Rol</label>
-            <input class="form-control" type="text" name="codigo rol" id="Codigo_perfil" maxlength="100" placeholder="" required>
+            <input class="form-control" type="text" name="Codigo_perfil" id="Codigo_perfil" maxlength="100" placeholder="" required>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-xs-6">
             <label for="">Rol</label>
-            <input class="form-control" type="text" name="codigo rol" id="Descripcion_perfil" maxlength="100" placeholder="" required>
+            <input class="form-control" type="text" name="Descripcion_perfil" id="Descripcion_perfil" maxlength="100" placeholder="" required>
           </div>
           <div class="form-group col-lg-6 col-md-6 col-xs-6">
             <label for="">Descripcion de rol a crear</label>
-            <input class="form-control" type="text" name="codigo rol" id="Observaciones" maxlength="100" placeholder="" required>
+            <input class="form-control" type="text" name="Observaciones" id="Observaciones" maxlength="100" placeholder="" required>
           </div>
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="btn btn-primary" type="submit" id="btnGuardarRol"><i class="fa fa-save"></i>  Guardar</button>
@@ -89,7 +89,7 @@ if ($_SESSION['acceso']==1) {
 }
 require 'footer.php'
  ?>
- <script src="scripts/permiso.js"></script>
+ <script src="scripts/permisos.js"></script>
  <?php 
 }
 

@@ -11,8 +11,8 @@ public function __construct(){
 
 // inserta registro
 public function insertar($Codigo_perfil,$Descripcion_perfil,$Observaciones){
-	$sql="INSERT INTO rol(Codigo_perfil,Descripcion_perfil,Observaciones) VALUE ($Codigo_perfil,$Descripcion_perfil,$Observaciones)"
-	return ejecutarConsulta($sql)
+	$sql="INSERT INTO rol (Codigo_perfil,Descripcion_perfil,Observaciones) VALUE ('$Codigo_perfil','$Descripcion_perfil','$Observaciones')";
+	return ejecutarConsulta($sql);
 }
 
 //listar registros

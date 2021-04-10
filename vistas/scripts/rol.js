@@ -1,3 +1,12 @@
+var tabla;
+
+//funcion que se ejecuta al inicio
+function init(){
+   mostrarform(false);
+   listar();
+
+}
+
 function init(){
     $("#FormularioRol").on("submit",function(e){
         guardaryeditar(e);
@@ -30,6 +39,19 @@ function guardaryeditar(e){
     });
 
     limpiar();
+}
+
+function mostrarform(flag){
+	if(flag){
+		$("#listadoregistros").hide();
+		$("#formularioregistros").show();
+		$("#btnGuardar").prop("disabled",false);
+		$("#btnagregar").hide();
+	}else{
+		$("#listadoregistros").show();
+		$("#formularioregistros").hide();
+		$("#btnagregar").show();
+	}
 }
 
 

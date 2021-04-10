@@ -9,7 +9,12 @@ $Observaciones=isset($_POST["Observaciones"])? limpiarCadena($_POST["Observacion
 
 switch ($_GET["op"]){
     case 'guardaryeditar':
-        break;
+        if(empty($Codigo_perfil)){
+            $rspta=$rol->insertar($Codigo_perfil,$Descripcion_perfil,$Observaciones);
+            echo $rspta ? "Rol registrado":"No se registro";
+        }else{
+        }
+    break;
 }
 
 ?>

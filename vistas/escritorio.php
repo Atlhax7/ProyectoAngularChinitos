@@ -18,17 +18,7 @@ if ($_SESSION['escritorio']==1) {
   $totalc=$regc->total_compra;
 
   $rsptav = $consulta->totalventahoy();
-  $regv=$rsptav->fetch_object();
-  $totalv=$regv->total_venta;
-
-  //obtener valores para cargar al grafico de barras
-  $compras10 = $consulta->comprasultimos_10dias();
-  $fechasc='';
-  $totalesc='';
-  while ($regfechac=$compras10->fetch_object()) {
-    $fechasc=$fechasc.'"'.$regfechac->fecha.'",';
-    $totalesc=$totalesc.$regfechac->total.',';
-  }
+  
 
 
 
