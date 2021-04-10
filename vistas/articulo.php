@@ -18,7 +18,7 @@ if ($_SESSION['almacen']==1) {
         <div class="col-md-12">
       <div class="box">
 <div class="box-header with-border">
-  <h1 class="box-title">Articulo <button class="btn btn-success" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i>Agregar</button> <a target="_blank" href="../reportes/rptarticulos.php"><button class="btn btn-info">Reporte</button></a></h1>
+  <h1 class="box-title">Articulo <button class="btn btn-success" id="btnagregar" data-toggle="modal" data-target="#formularioregistros"><i class="fa fa-plus-circle"></i>Agregar</button> <a target="_blank" href="../reportes/rptarticulos.php"><button class="btn btn-info">Reporte</button></a></h1>
   <div class="box-tools pull-right">
     
   </div>
@@ -56,7 +56,7 @@ if ($_SESSION['almacen']==1) {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Gestion de usuarios</h4>
+        <h4 class="modal-title">Gestion de productos</h4>
       </div>
       <div class="modal-body">
         <form action="" name="formulario" id="formulario" method="POST">
@@ -72,27 +72,26 @@ if ($_SESSION['almacen']==1) {
             <img src="" alt="" width="150px" height="120" id="imagenmuestra">
           </div>
 
-          <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Categoria(*):</label>
-            <select name="idcategoria" id="idcategoria" class="form-control selectpicker" data-Live-search="true" required></select>
-          </div>
-            <div class="form-group col-lg-6 col-md-6 col-xs-12">
-            <label for="">Stock</label>
-            <input class="form-control" type="number" name="stock" id="stock"  required>
-          </div>
-
           <ul class="nav nav-pills">
             <li class="active"><a data-toggle="pill" href="#home">Descripcion</a></li>
             <li><a data-toggle="pill" href="#menu1">Codigo</a></li>
           </ul>
           <div class="tab-content">
             <div id="home" class="tab-pane fade in active">
-              <h3>Descripcion</h3>
+              <h3>Descripción</h3>
               <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                <label for="">Descripcion</label>
+                <label for="">Descripción</label>
                 <input class="form-control" type="text" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripcion">
               </div>
-              
+              <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="">Categoria(*):</label>
+                <select name="idcategoria" id="idcategoria" class="form-control selectpicker" data-Live-search="true" required></select>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <label for="">Stock</label>
+                <input class="form-control" type="number" name="stock" id="stock"  required>
+              </div>
+            </div>
             <div id="menu1" class="tab-pane fade">
               <h3>Codigo</h3>
               <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -108,10 +107,15 @@ if ($_SESSION['almacen']==1) {
           </div>
           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
-
-            <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+            <button class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
           </div>
         </form>
+      </div>
+      <div class="modal-footer ">
+      
+      </div>
+    </div>
+  </div>
 </div>
 <!--fin centro-->
       </div>
