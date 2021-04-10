@@ -86,7 +86,7 @@ switch ($_GET["op"]) {
 
 	while ($reg=$rspta->fetch_object()) {
 		$data[]=array(
-			"0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
+			"0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
 			"1"=>$reg->nombre,
 			"2"=>$reg->tipo_documento,
 			"3"=>$reg->num_documento,

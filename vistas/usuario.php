@@ -16,7 +16,7 @@ if ($_SESSION['acceso']==1) {
         <div class="col-md-12">
       <div class="box">
 <div class="box-header with-border">
-  <h1 class="box-title">Usuarios <button class="btn btn-success"  id="btnagregar" data-toggle="modal" data-target="#formularioregistros"><i class="fa fa-plus-circle"></i>Agregar</button></h1>
+  <h1 class="box-title">Gestion de Usuarios <button class="btn btn-success"  id="btnagregar" data-toggle="modal" data-target="#formularioregistros"><i class="fa fa-plus-circle"></i>Agregar</button></h1>
   <div class="box-tools pull-right">
     
   </div>
