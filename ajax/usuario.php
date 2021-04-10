@@ -50,7 +50,7 @@ switch ($_GET["op"]) {
 		$mail->IsSMTP();
 		
 		//Configuracion servidor mail
-		$mail->setFrom("atlhax7@gmail.com","Comercializadora Chinitos");
+		$mail->setFrom("atlhax7@gmail.com","Erick Montero");
 		//$mail->From = "henry83266@gmail.com"; //remitente
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = 'tls'; //seguridad
