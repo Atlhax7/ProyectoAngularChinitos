@@ -18,7 +18,7 @@ if ($_SESSION['acceso']==1) {
         <div class="col-md-12">
       <div class="box">
 <div class="box-header with-border">
-  <h1 class="box-title">Permisos <button id="btnagregar" class="btn btn-success" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i>Agregar</button></h1>
+  <h1 class="box-title">Roles <button id="btnagregar" class="btn btn-success" data-toggle="modal" data-target="#formularioregistrosrol"><i class="fa fa-plus-circle"></i>Agregar</button></h1>
   <div class="box-tools pull-right">
     
   </div>
@@ -39,6 +39,42 @@ if ($_SESSION['acceso']==1) {
   </table>
 </div>
 <!--fin centro-->
+<!--inicio modal -->
+<div class="panel-body modal fade" id="formularioregistrosrol" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Gestion roles</h4>
+      </div>
+      <!--inicio cuerpo modal-->
+      <div class="modal-body">
+        <form action="" name="FormularioRol" id="FormularioRol" method="POST">
+          <div class="form-group col-lg-6 col-md-6 col-xs-6">
+            <label for="">Codigo Rol</label>
+            <input class="form-control" type="text" name="codigo rol" id="Codigo_perfil" maxlength="100" placeholder="" required>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-xs-6">
+            <label for="">Rol</label>
+            <input class="form-control" type="text" name="codigo rol" id="Descripcion_perfil" maxlength="100" placeholder="" required>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-xs-6">
+            <label for="">Descripcion de rol a crear</label>
+            <input class="form-control" type="text" name="codigo rol" id="Observaciones" maxlength="100" placeholder="" required>
+          </div>
+          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button class="btn btn-primary" type="submit" id="btnGuardarRol"><i class="fa fa-save"></i>  Guardar</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+      </div>
+      <!--fin cuerpo modal-->
+    </div>
+  </div>
+</div>
+<!--seccion de creacion de rol-->
       </div>
       </div>
       </div>
