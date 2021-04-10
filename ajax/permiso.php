@@ -1,6 +1,6 @@
  <?php 
 require_once "../modelos/Permiso.php";
-
+$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $categoria=new Permiso();
 
 

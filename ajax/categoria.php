@@ -1,6 +1,6 @@
 <?php 
 require_once "../modelos/Categoria.php";
-
+$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $categoria=new Categoria();
 
 $idcategoria=isset($_POST["idcategoria"])? limpiarCadena($_POST["idcategoria"]):"";

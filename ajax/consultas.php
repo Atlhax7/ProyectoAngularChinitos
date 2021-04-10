@@ -1,6 +1,6 @@
 <?php 
 require_once "../modelos/Consultas.php";
-
+$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $consulta = new Consultas();
 
 switch ($_GET["op"]) {

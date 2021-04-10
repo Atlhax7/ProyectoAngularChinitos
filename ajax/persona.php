@@ -1,6 +1,6 @@
 <?php 
 require_once "../modelos/Persona.php";
-
+$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 $persona=new Persona();
 
 $idpersona=isset($_POST["idpersona"])? limpiarCadena($_POST["idpersona"]):"";

@@ -1,5 +1,7 @@
 <?php 
 require_once "../modelos/Venta.php";
+$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 if (strlen(session_id())<1) 
 	session_start();
 
