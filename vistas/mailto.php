@@ -1,21 +1,21 @@
 <?php
 
 //librerias
-require 'PHPMailer/PHPMailerAutoload.php';
+require '../PHPMailer/PHPMailerAutoload.php';
  
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
 $mail->IsSMTP();
  
 //Configuracion servidor mail
-$mail->setFrom("atlhax7@gmail.com","Comercializadora Chinitos");
+$mail->setFrom("henry83266@gmail.com","Comercializadora Monster");
 //$mail->From = "henry83266@gmail.com"; //remitente
 $mail->SMTPAuth = true;
 $mail->SMTPSecure = 'tls'; //seguridad
 $mail->Host = "smtp.gmail.com"; // servidor smtp
 $mail->Port = 587; //puerto
-$mail->Username ='atlhax7@gmail.com'; //nombre usuario
-$mail->Password = 'erick1997'; //contraseña
+$mail->Username ='henry83266@gmail.com'; //nombre usuario
+$mail->Password = 'Thouloose>:0'; //contraseña
  
 //Agregar destinatario
 $mail->AddAddress($_POST['email']);

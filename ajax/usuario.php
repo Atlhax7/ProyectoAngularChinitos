@@ -1,7 +1,10 @@
 <?php 
 session_start();
 require_once "../modelos/Usuario.php";
-// require "./phpmailer/PHPMailerAutoload.php";
+use PHPMailer\PHPMailer\PHPMailer;
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
+//require "../PHPMailer/PHPMailerAutoload.php";
 $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 $usuario=new Usuario();
@@ -39,18 +42,16 @@ switch ($_GET["op"]) {
 	$passwordHash=hash("SHA256", $password);
 	$clavehash=hash("SHA256", $clave);
 	if (empty($idusuario)) {
-		$rspta=$usuario->insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso'],$apellido);
+		$rspta=$usuario->insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$passwordHash,$imagen,$_POST['permiso'],$apellido);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar todos los datos del usuario";
-		$mail=new PHPMailer;
 		//librerias
-		require 'ajax/PHPMailer/PHPMailerAutoload.php';
 		
 		//Create a new PHPMailer instance
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		
 		//Configuracion servidor mail
-		$mail->setFrom("atlhax7@gmail.com","Comercializadora Chinitos");
+		$mail->setFrom("atlhax7@gmail.com","Comercializadora Monster");
 		//$mail->From = "henry83266@gmail.com"; //remitente
 		$mail->SMTPAuth = true;
 		$mail->SMTPSecure = 'tls'; //seguridad
@@ -60,7 +61,7 @@ switch ($_GET["op"]) {
 		$mail->Password = 'erick1997'; //contraseña
 		
 		//Agregar destinatario
-		$mail->AddAddress($_POST['email']);
+		$mail->AddAddress($email);
 		$mail->Subject = "Codigo de Ingreso";
 		$message = '
 		<html>
@@ -83,11 +84,7 @@ switch ($_GET["op"]) {
 		} else {
 			echo 'Error: '.$mail->ErrorInfo;
 		}
-		if(!$mail->send()){
-			$result="Algo esta mal, vuelva a intentar";
-		}else{
-			$result="Se envio contraseña por  correo";
-		}
+		
 	}else{
 		$rspta=$usuario->editar($idusuario,$nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso'],$apellido);
 		echo $rspta ? "Datos actualizados correctamente" : "No se pudo actualizar los datos";
