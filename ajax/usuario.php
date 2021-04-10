@@ -2,6 +2,7 @@
 session_start();
 require_once "../modelos/Usuario.php";
 // require "./phpmailer/PHPMailerAutoload.php";
+$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 $usuario=new Usuario();
 
@@ -17,7 +18,7 @@ $login=isset($_POST["login"])? limpiarCadena($_POST["login"]):"";
 $clave=isset($_POST["clave"])? limpiarCadena($_POST["clave"]):"";
 $imagen=isset($_POST["imagen"])? limpiarCadena($_POST["imagen"]):"";
 $apellido=isset($_POST["apellido"])? limpiarCadena($_POST["apellido"]):"";
-
+$password=substr(str_shuffle($permitted_chars), 0, 8);
 
 switch ($_GET["op"]) {
 	case 'guardaryeditar':
@@ -35,24 +36,53 @@ switch ($_GET["op"]) {
 	
 
 	//Hash SHA256 para la contraseña
+	$passwordHash=hash("SHA256", $password);
 	$clavehash=hash("SHA256", $clave);
 	if (empty($idusuario)) {
 		$rspta=$usuario->insertar($nombre,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clavehash,$imagen,$_POST['permiso'],$apellido);
 		echo $rspta ? "Datos registrados correctamente" : "No se pudo registrar todos los datos del usuario";
 		$mail=new PHPMailer;
-		$mail->isSMTP();
-		$mail->Host='smtp.gmail.com';
-		$mail->Port=587;
-		$mail->SMTPAuth=true;
-		$mail->SMTPSecure='tls';
-		$mail->Username="banquitomonster@gmail.com";
-		$mail->Password="Monster1234/";
-		$mail->setFrom($email,$nombre);
-		$mail->addAddress('banquitomonster@gmail.com');
-		$mail->addReplyTo($email,$nombre);
+		//librerias
+		require 'ajax/PHPMailer/PHPMailerAutoload.php';
+		
+		//Create a new PHPMailer instance
+		$mail = new PHPMailer();
+		$mail->IsSMTP();
+		
+		//Configuracion servidor mail
+		$mail->setFrom("atlhax7@gmail.com","Comercializadora Chinitos");
+		//$mail->From = "henry83266@gmail.com"; //remitente
+		$mail->SMTPAuth = true;
+		$mail->SMTPSecure = 'tls'; //seguridad
+		$mail->Host = "smtp.gmail.com"; // servidor smtp
+		$mail->Port = 587; //puerto
+		$mail->Username ='atlhax7@gmail.com'; //nombre usuario
+		$mail->Password = 'erick1997'; //contraseña
+		
+		//Agregar destinatario
+		$mail->AddAddress($_POST['email']);
+		$mail->Subject = "Codigo de Ingreso";
+		$message = '
+		<html>
+			<head>
+				<title>HTML email</title>
+			</head>
+			<body>
+				<h1>Estimado señor/a '.$nombre." ".$apellido.'</h1>
+				<h2>Código de ingreso: <a> '.$password.' </a></h2>
+			</body>
+		</html>
+		';
+
+		$mail->Body = $message;
+		$mail->CharSet = 'UTF-8';
 		$mail->isHTML(true);
-		$mail->Subject='Enviador por '.$nombre;
-		$mail->Body='<h1>Contraseña</h1><br/>'.$clave;
+		//Avisar si fue enviado o no y dirigir al index
+		if ($mail->Send()) {
+			echo 'Enviado Correctamente';
+		} else {
+			echo 'Error: '.$mail->ErrorInfo;
+		}
 		if(!$mail->send()){
 			$result="Algo esta mal, vuelva a intentar";
 		}else{
@@ -86,7 +116,7 @@ switch ($_GET["op"]) {
 
 	while ($reg=$rspta->fetch_object()) {
 		$data[]=array(
-			"0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
+			"0"=>($reg->condicion)?'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-danger btn-xs" onclick="desactivar('.$reg->idusuario.')"><i class="fa fa-close"></i></button>':'<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#formularioregistros" onclick="mostrar('.$reg->idusuario.')"><i class="fa fa-pencil"></i></button>'.' '.'<button class="btn btn-primary btn-xs" onclick="activar('.$reg->idusuario.')"><i class="fa fa-check"></i></button>',
 			"1"=>$reg->nombre,
 			"2"=>$reg->tipo_documento,
 			"3"=>$reg->num_documento,
