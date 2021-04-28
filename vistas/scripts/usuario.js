@@ -97,14 +97,14 @@ function guardaryeditar(e){
      	data: formData,
      	contentType: false,
      	processData: false,
-
+		
      	success: function(datos){
      		bootbox.alert(datos);
      		mostrarform(false);
      		tabla.ajax.reload();
      	}
      });
-
+	 
      limpiar();
 }
 
