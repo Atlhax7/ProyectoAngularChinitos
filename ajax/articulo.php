@@ -50,6 +50,7 @@ switch ($_GET["op"]) {
     case 'listar':
 		$rspta=$articulo->listar();
 		$data=Array();
+		echo $rspta;
 
 		while ($reg=$rspta->fetch_object()) {
 			$data[]=array(
